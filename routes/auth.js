@@ -6,6 +6,7 @@ const bycrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { invalid } = require("joi");
 const { findById } = require("../models/StudentNotesModels");
+const StudentNotesModels = require("../models/StudentNotesModels");
 
 router.post("/", async (req,res) => {
     try {
@@ -84,27 +85,7 @@ const validate = (data) => {
     return schema.validate(data);
 };
 
-//Update
-router.put("/:id", async (req, res) => {
 
-    try{
-        const updateStudent = await  SignUpModels.findByIdAndUpdate(req.params.id, {
-            id: req.body.id,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            mobile: req.body.mobile,
-            status: req.body.status,
-            password: req.body.password,
-        
-        });
-
-        res.status(200).json(updateStudent);
-    }
-    catch(err){
-        res.status(500).json(err)
-    }
-});
 
 //Delete
 router.delete("/:id", async (req, res) => {
@@ -117,10 +98,10 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
-//Get all users
-router.get("/", async (req, res) => {
+//Get all notes
+router.get("/note", async (req, res) => {
     try{
-        const student = await SignUpModels.find();
+        const student = await StudentNotesModels.find();
         res.status(200).json(student);
     }
     catch(err){
