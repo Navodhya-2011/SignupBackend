@@ -1,0 +1,13 @@
+POST http://localhost:4000/app/signup
+Content-Type: application/json
+
+{
+    "id":"0001",
+    "firstName":"Navodhya",
+    "lastName":"Yasisuru",
+    "email":"navodhya123@gmail.com",
+    "mobile":"0707865123",
+    "status":"true",
+    "password":"123yasi",
+    "accountType":"cash"
+}
