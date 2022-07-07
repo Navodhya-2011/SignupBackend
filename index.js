@@ -5,6 +5,8 @@ const dotenv = require('dotenv');
 const routesUrls = require('./routes/routes');
 const cors =  require('cors');
 const auth = require('./routes/auth');
+const note = require('./routes/notes');
+
 
 dotenv.config()
 
@@ -14,4 +16,6 @@ app.use(express.json())
 app.use(cors())
 app.use('/app', routesUrls)
 app.use('/app', auth)
+app.use('/note', note)
+
 app.listen(4000, () => console.log("server is up and running"))
